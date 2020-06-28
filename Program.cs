@@ -70,13 +70,32 @@ namespace Tugas8
                                 listKaryawan.Add(sales);
                                 break;
                             default:
+                                Console.WriteLine("Menu Yang Anda Masukkan Salah!!!");
                                 break;
                         }
                         break;
                     case 2:
+                        int no = -1, hapus = -1;
                         Console.WriteLine("Hapus Data Karyawan\n");
                         Console.Write("NIK : ");
                         string nik = Console.ReadLine();
+                        foreach (Karyawan karyawan in listKaryawan)
+                        {
+                            no++;
+                            if(karyawan.Nik == nik)
+                            {
+                                hapus = no;
+                            }
+                        }
+                        if (hapus != -1)
+                        {
+                            listKaryawan.RemoveAt(hapus);
+                            Console.WriteLine("\nData Berhasil dihapus");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nData Nik tidak ditemukan");
+                        }
                         break;
                     case 3:
                         int noUrut = 1;
@@ -86,6 +105,11 @@ namespace Tugas8
                             Console.WriteLine("{0}. Nik: {1}, Nama: {2}, Gaji: {3:N0}", noUrut, karyawan.Nik, karyawan.Nama, karyawan.Gaji());
                             noUrut++;
                         }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        Console.WriteLine("Menu Yang Anda Masukkan Salah!!!");
                         break;
                 }
                 Console.WriteLine("\n\nTekan Enter untuk kembali ke Menu");
