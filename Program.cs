@@ -98,12 +98,29 @@ namespace Tugas8
                         }
                         break;
                     case 3:
-                        int noUrut = 1;
+                        int noUrut = 0;
+                        string jenis=" ";
                         Console.WriteLine("Data Karyawan\n");
                         foreach (Karyawan karyawan in listKaryawan)
                         {
-                            Console.WriteLine("{0}. Nik: {1}, Nama: {2}, Gaji: {3:N0}", noUrut, karyawan.Nik, karyawan.Nama, karyawan.Gaji());
+                            if(karyawan is KaryawanTetap)
+                            {
+                                jenis = "Karyawan Tetap";
+                            }
+                            else if(karyawan is KaryawanHarian)
+                            {
+                                jenis = "Karyawan Harian";
+                            }
+                            else
+                            {
+                                jenis = "Sales";
+                            }
                             noUrut++;
+                            Console.WriteLine("{0}. Nik: {1}, Nama: {2}, Gaji: {3:N0}, {4}", noUrut, karyawan.Nik, karyawan.Nama, karyawan.Gaji(), jenis);
+                        }
+                        if (noUrut < 1)
+                        {
+                            Console.WriteLine("Data Karyawan Kosong");
                         }
                         break;
                     case 4:
@@ -116,7 +133,6 @@ namespace Tugas8
                 Console.ReadKey();
             }
             while (pilihan != 4);
-            Console.ReadKey();
         }
     }
 }
